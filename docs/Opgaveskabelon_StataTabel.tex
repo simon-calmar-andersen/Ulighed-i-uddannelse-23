@@ -1,0 +1,99 @@
+%% Opgaveskabelon
+%% Ulighed i Uddannelse BA-seminar
+%% Simon Calmar Andersen
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Opsætning
+
+
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} %For at kunne indsætte billedfiler såsom pdf fra f.eks. Stata-output
+\usepackage{setspace} %For at kunne ændre linjeafstand
+
+%For at kunne lave links til krydshenvisninger
+\usepackage{hyperref} 
+\hypersetup{
+    colorlinks=true,
+    allcolors=magenta
+}
+
+% Referencer
+\usepackage[
+backend=bibtex,
+style=authoryear,
+doi=false,isbn=false,url=false,eprint=false
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Titlen på din BA-opgave}
+
+\author{Dit Navn$^{a*}$,  \\
+        \small $^{a}$ Institut for Statskundskab, Aarhus Universitet \\
+        \small $^{*}$ \tt{email.adresse}}
+
+\date{\today} %slet \today hvis ikke den skal opdatere dato
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dokumentet begynder herunder
+\begin{document}
+\doublespacing
+
+\maketitle
+
+\begin{abstract} 
+\noindent Her kan evt. skrives et kort abstact (sammenfatning) af opgaven.  
+\end{abstract}
+
+
+
+\section*{Indledning}
+Beskriv den samfundsmæssige og forskningsmæssige motivation for din problemstilling. Indsæt evt en fodnote\footnote{Dette er en fodnote}. 
+
+
+\section*{Referencer}
+Lav en reference, til en artikel som du har eksporteret fra Zotero. Øverst i denne Latex-skabelon (linje 29 i skabelonen) skal du indsætte navnet på din bib-fil (som er den fil, der henter referencer fra Zotero)  og fjerne  \% -tegnet. I bib-bilen kan du se, hvilken "key" din reference har fået. Typisk er det \verb|efternavn_første-ord-titel_årstal|. Referencen indsættes med 
+
+\verb|\parencite{andersen_increasing_2016}|.
+
+\parencite{andersen_increasing_2016}
+Nedest i Latex-dokumentet (lige oven ord \verb|\end{document}|) skal du fjerne \%-tegnet foran \verb|\printbibliography|.
+
+
+
+
+
+
+
+\section*{Figurer}
+Når du har uploaded en figur-fil til Overleaf-projektet, skal du indsætte dens navn herunder. Du kan henvise til figuren ved at indsætte reference til dens label \verb|\ref{figur-label}|. Fjern \%-tegnene fra tex-filen herunder, når figuren er uploaded og filnavnet ændret.
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=\linewidth]{navnet_på_din_fil.pdf}
+%\caption{Eksempel på figur}
+%\label{figur-label}
+%\end{figure}
+
+
+\section*{Tabeller}
+
+Indsæt tabeller fra STata, som er gemt i undermappe.
+
+
+\begin{table}
+\input{eksempel/tabel.tex}
+\end{table}
+
+%\printbibliography
+
+\end{document}
+

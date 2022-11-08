@@ -1,0 +1,121 @@
+%% Opgaveskabelon
+%% Ulighed i Uddannelse BA-seminar
+%% Simon Calmar Andersen
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Opsætning
+
+
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} %For at kunne indsætte billedfiler såsom pdf fra f.eks. Stata-output
+\usepackage{setspace} %For at kunne ændre linjeafstand
+\usepackage{threeparttable} %For at kunne indsætte noter til tabel m.v.
+
+\usepackage{adjustbox} %For at kunne tilpasse tabel til siden
+\usepackage{booktabs} %For at kunne lave pænere tabel-layout. Fungerer sammen med booktabs-option i Stata
+
+%For at kunne lave links til krydshenvisninger
+\usepackage{hyperref} 
+\hypersetup{
+    colorlinks=true,
+    allcolors=magenta
+}
+
+% Referencer
+\usepackage[
+backend=bibtex,
+style=authoryear,
+doi=false,isbn=false,url=false,eprint=false
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{DiD opgaver }
+
+\author{Simon Calmar Andersen$^{a*}$,  \\
+        \small $^{a}$ Institut for Statskundskab, Aarhus Universitet \\
+        \small $^{*}$ \tt{sca@ps.au.dk}}
+
+\date{\today} %slet \today hvis ikke den skal opdatere dato
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dokumentet begynder herunder
+\begin{document}
+\doublespacing
+
+\maketitle
+
+%\begin{abstract} 
+%\noindent Her kan evt. skrives et kort abstact (sammenfatning) af opgaven.  
+%\end{abstract}
+
+
+
+\section*{Indledning}
+Denne rapport viser resultater af opgaver i Difference-in-Differences (DiD) metoden, baseret på Sievertsens data.\footnote{\url{https://hhsievertsen.github.io/applied_econ_with_r/}}
+
+
+\clearpage
+
+\section*{Common trend}
+
+
+
+
+Figur \ref{common_trend} viser trend for elever der tog på summer school og elever, som ikke gjorde.
+
+
+\begin{figure}
+\caption{Common Trend Assumption} \label{common_trend}
+\includegraphics{Sievertsen_ovelse/common_trend.pdf}
+\end{figure}
+
+\section*{DiD estimater}
+Tabel \ref{tab:did} viser forskellige DiD modeller. Variablen \verb|camp_post| er en indikator (dummy) variabel med værdien 1 for observationer (elever), der har været på summcer camp i klassetrin efter de har været på summercamp (dvs. efter 5. klasse). Variablen \verb|post| er en indikator for klassetrin efter 5. klasse.
+
+Elev-FE betyder elev-fixed-effects og svarer til at indsætte en dummy-variabel for hver elev i datasættet (svarende til Angrist og Pischke's ligning 5.5 s. 194, hvor de indsætter en dummy for hver stat i deres datasæt). Tilsvarende for klassetrin-FE.
+
+\begin{table}[h] \centering
+		\caption{DiD modeller med test scores som afhængig variabel} \label{tab:did}
+	\begin{adjustbox}{max width=\textwidth}
+	\begin{threeparttable} 
+			\input{Sievertsen_ovelse/did.tex}
+		\begin{tablenotes}
+            \item Kilde: Data fra Sievertsen øvelse
+        \end{tablenotes}
+	\end{threeparttable}
+	\end{adjustbox}
+\end{table}
+
+\section*{Opgaver}
+
+\begin{enumerate}
+	\item Forsøg at genskabe figur \ref{common_trend} og tabel \ref{tab:did}.
+	\begin{enumerate}
+	\item Stata-tip I: Figuren kan laves ved først at bruge kommandoen \verb|collapse| til at lave et datasæt, der tager gennemsnits-test-score for hver klassetrin (year) og for hver af de to grupper (summercamp eller ikke-summercamp)
+	\item Stata-tip II: Regressionsmodellerne med fixed effects kan laves ved at installere pakken reghdfe (med kommandoerne \verb| ssc install ftools| \\ 
+	og \verb|ssc install reghdfe|). Variabler, som skal bruges til fixed effect, sættes i absorb-parentesen i en kommando i stil med denne: \\ 
+	\verb|reghdfe y x z, absorb(Fe_variabel) cluster(school_id)|
+	\end{enumerate}
+	\item Kommenter på figur \ref{common_trend}. Bestyrker den antagelsen om \textit{common trends}?
+	\item Forklar tabel \ref{tab:did}. 
+		\begin{enumerate}
+		\item Hvad viser modellerne?		
+		\item Hvorfor estimeres kontrolvariablene ikke i model 3-5 (selvom de var med i modellen i Stata)?
+		\item Hvorfor er \verb|post| variablen ikke estimeret i model 4 og 5 (selvom den var med i modellerne)?
+		\end{enumerate}
+	\item Giv en samlet vurdering af om der er en effekt af summer camp (i dette fiktive datasæt) og hvor stor den er. Inddrag også gerne resultaterne fra regressionsmodellerne, RCT- og IV-modellerne fra de tidligere øvelsesopgaver.
+\end{enumerate}
+
+% \printbibliography
+
+\end{document}
+

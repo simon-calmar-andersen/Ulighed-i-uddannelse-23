@@ -1,0 +1,261 @@
+%% Præsentationsskabelon
+%% Ulighed i Uddannelse BA-seminar
+%% Simon Calmar Andersen
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Opsætning
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+
+\usepackage[english]{babel}
+\usepackage{amsmath,blkarray}
+\usepackage{multirow}
+\usepackage{outlines}
+\usepackage{dsfont}
+\usepackage{csquotes}
+\usepackage[flushleft]{threeparttablex}
+
+
+\mode<presentation> {
+
+%\renewcommand{\labelitemi}{\footnotesize$\hookrightarrow$}
+%\renewcommand{\labelitemii}{\footnotesize$\rightharpoondown$}
+
+
+	%\usetheme{default}
+	%\usetheme{AnnArbor}
+	%\usetheme{Antibes}
+	%\usetheme{Bergen}
+	%\usetheme{Berkeley}
+	%\usetheme{Berlin}
+	%\usetheme{Boadilla}
+	%\usetheme{CambridgeUS}
+	%\usetheme{Copenhagen}
+	%\usetheme{Darmstadt}
+	%\usetheme{Dresden}
+	%\usetheme{Frankfurt}
+	%\usetheme{Goettingen}
+	%\usetheme{Hannover}
+	%\usetheme{Ilmenau}
+	%\usetheme{JuanLesPins}
+	%\usetheme{Luebeck}
+	\usetheme{Madrid}
+	%\usetheme{Malmoe}
+	%\usetheme{Marburg}
+	%\usetheme{Montpellier}
+	%\usetheme{PaloAlto}
+	%\usetheme{Pittsburgh}
+	%\usetheme{Rochester}
+	%\usetheme{Singapore}
+	%\usetheme{Szeged}
+	%\usetheme{Warsaw}
+	
+	% As well as themes, the Beamer class has a number of color themes
+	% for any slide theme. Uncomment each of these in turn to see how it
+	% changes the colors of your current slide theme.
+	
+	%\usecolortheme{albatross}
+	%\usecolortheme{beaver}
+	%\usecolortheme{beetle}
+	%\usecolortheme{crane}
+	%\usecolortheme{dolphin}
+	%\usecolortheme{dove}
+	%\usecolortheme{fly}
+	\usecolortheme{lily}
+	%\usecolortheme{orchid}
+	%\usecolortheme{rose}
+	%\usecolortheme{seagull}
+	%\usecolortheme{seahorse}
+	%\usecolortheme{whale}
+	%\usecolortheme{wolverine}
+	
+	%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+	%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+	
+	%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\useoutertheme{miniframes} %uncommet to remove header with sections
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{subfig}
+
+\DeclareMathOperator\var{var}
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}%
+    \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+
+%Outline
+\AtBeginSection[]
+{
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+% Referencer
+\usepackage[
+backend=bibtex,
+style=authoryear,
+doi=false,isbn=false,url=false,eprint=false
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+
+\title{Effekten af sommerskole}
+
+\author{Dit Navn}
+
+\date{\today} %slet \today hvis ikke den skal opdatere dato
+
+\institute[AU] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{\large{Fiktivt datasæt}}
+
+%------------------------------------
+%	%	PRESENTATION SLIDES
+%------------------------------------
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	
+	\begin{frame}[plain]
+		\titlepage % Print the title page as the first slide
+	\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduktion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Intro}
+    \begin{itemize}
+        \item Denne præsentation viser resultater af opgaver baseret på Sievertsens data og øvelser \href{https://hhsievertsen.github.io/applied_econ_with_r/}{(\underline{link})}. 
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data og design}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Den empiriske case}
+    \begin{itemize}
+        \item Nogle elever blev tilfældigt udtrukket til at modtage en invitation til at deltage i sommerskole (indikeret med variablen Letter)
+        \item Variablen Summer school indikerer de elever, som deltog på sommerskole
+    \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Balancetabel}
+    \begin{table}[h] \centering
+\resizebox{.7\linewidth}{!}{    	\begin{threeparttable} 
+    		\caption{Balancetabel} \label{tab:balance}
+    			\input{Sievertsen_ovelse/balance.tex}
+    		\begin{tablenotes}
+                \item Kilde: Data fra Sievertsen øvelse
+            \end{tablenotes}
+    	\end{threeparttable}}
+    \end{table}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Compare means}
+
+\begin{table}[h] \centering
+	\begin{threeparttable} 
+		\caption{Compare means, treatment} \label{tab:treatment}
+			\input{Sievertsen_ovelse/treatment.tex}
+		\begin{tablenotes}
+            \item Kilde: Data fra Sievertsen øvelse
+        \end{tablenotes}
+	\end{threeparttable}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{Regression med kontrolvariable}
+
+\begin{table}[h] \centering
+\resizebox{.4\linewidth}{!}{
+    \begin{threeparttable} 
+		\caption{Sammenhæng mellem test score og summer school} \label{tab:regression}
+			\input{Sievertsen_ovelse/regression.tex}
+		\begin{tablenotes}
+            \item Kilde: Data fra Sievertsen øvelse
+        \end{tablenotes}
+	\end{threeparttable}}
+\end{table}
+\end{frame}
+
+
+\begin{frame}{Regression af randomiseret treatment (letter)}
+
+\begin{table}[h] \centering
+\resizebox{.4\linewidth}{!}{
+    \begin{threeparttable} 
+		\caption{Effekt af letter på test score} \label{tab:regression_letter}
+			\input{Sievertsen_ovelse/regression_letter.tex}
+		\begin{tablenotes}
+            \item Kilde: Data fra Sievertsen øvelse
+        \end{tablenotes}
+	\end{threeparttable}}
+\end{table}
+\end{frame}
+
+\begin{frame}{Instrumental Variable}
+
+
+\begin{table}[h] \centering
+\resizebox{.6\linewidth}{!}{
+    \begin{threeparttable} 
+		\caption{Reduced form og IV-model} \label{tab:iv}
+			\input{Sievertsen_ovelse/IV_letter.tex}
+		\begin{tablenotes}
+            \item Kilde: Data fra Sievertsen øvelse
+        \end{tablenotes}
+	\end{threeparttable}}
+\end{table}
+\end{frame}
+
+% \printbibliography
+
+\end{document}
+

@@ -1,0 +1,102 @@
+%% Opgaveskabelon
+%% Ulighed i Uddannelse BA-seminar
+%% Simon Calmar Andersen
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Opsætning
+
+
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} %For at kunne indsætte billedfiler såsom pdf fra f.eks. Stata-output
+\usepackage{setspace} %For at kunne ændre linjeafstand
+\usepackage{threeparttable} %For at kunne indsætte noter til tabel m.v.
+\usepackage{booktabs} %For at kunne lave pænere tabel-layout. Fungerer sammen med booktabs-option i Stata
+
+%For at kunne lave links til krydshenvisninger
+\usepackage{hyperref} 
+\hypersetup{
+    colorlinks=true,
+    allcolors=magenta
+}
+
+% Referencer
+\usepackage[
+backend=bibtex,
+style=authoryear,
+doi=false,isbn=false,url=false,eprint=false
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Sievertsens opgaver 5: Balancetabel }
+
+\author{Dit Navn$^{a*}$,  \\
+        \small $^{a}$ Institut for Statskundskab, Aarhus Universitet \\
+        \small $^{*}$ \tt{email.adresse}}
+
+\date{\today} %slet \today hvis ikke den skal opdatere dato
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dokumentet begynder herunder
+\begin{document}
+\doublespacing
+
+\maketitle
+
+%\begin{abstract} 
+%\noindent Her kan evt. skrives et kort abstact (sammenfatning) af opgaven.  
+%\end{abstract}
+
+
+
+\section*{Indledning}
+Denne rapport viser resultater af opgave 5 i Sievertsens øvelser\footnote{\url{https://hhsievertsen.github.io/applied_econ_with_r/}}. 
+
+
+\clearpage
+
+\section*{Balancetabel}
+
+
+Tabel \ref{tab:balance} viser balance ved baseline
+
+
+\begin{table}[h] \centering
+	\begin{threeparttable} 
+		\caption{Balancetabel} \label{tab:balance}
+			\input{Sievertsen_øvelse/balance.tex}
+		\begin{tablenotes}
+            \item Kilde: Data fra Sievertsen øvelse
+        \end{tablenotes}
+	\end{threeparttable}
+\end{table}
+
+
+\section*{Average Treatment Effect}
+
+Tabel \ref{tab:treatment} gennemsnitlig, standardiseret test score for treatment (letter) og kontrolgruppe (no letter) - og om forskellen er signifikant.
+
+
+\begin{table}[h] \centering
+	\begin{threeparttable} 
+		\caption{Compare means, treatment} \label{tab:treatment}
+			\input{Sievertsen_øvelse/treatment.tex}
+		\begin{tablenotes}
+            \item Kilde: Data fra Sievertsen øvelse
+        \end{tablenotes}
+	\end{threeparttable}
+\end{table}
+
+
+% \printbibliography
+
+\end{document}
+

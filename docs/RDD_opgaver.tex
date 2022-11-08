@@ -1,0 +1,156 @@
+%% Opgaveskabelon
+%% Ulighed i Uddannelse BA-seminar
+%% Simon Calmar Andersen
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Opsætning
+
+
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} %For at kunne indsætte billedfiler såsom pdf fra f.eks. Stata-output
+\usepackage{setspace} %For at kunne ændre linjeafstand
+\usepackage{threeparttable} %For at kunne indsætte noter til tabel m.v.
+\usepackage{booktabs} %For at kunne lave pænere tabel-layout. Fungerer sammen med booktabs-option i Stata
+
+%For at kunne lave links til krydshenvisninger
+\usepackage{hyperref} 
+\hypersetup{
+    colorlinks=true,
+    allcolors=magenta
+}
+
+% Referencer
+\usepackage[
+backend=bibtex,
+style=authoryear,
+doi=false,isbn=false,url=false,eprint=false
+]{biblatex}
+\addbibresource{bibliografi.bib}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{RDD opgaver }
+
+\author{Simon Calmar Andersen$^{a*}$,  \\
+        \small $^{a}$ Institut for Statskundskab, Aarhus Universitet \\
+        \small $^{*}$ \tt{sca@ps.au.dk}}
+
+\date{\today} %slet \today hvis ikke den skal opdatere dato
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dokumentet begynder herunder
+\begin{document}
+\doublespacing
+
+\maketitle
+
+%\begin{abstract} 
+%\noindent Her kan evt. skrives et kort abstact (sammenfatning) af opgaven.  
+%\end{abstract}
+
+
+
+\section*{Indledning}
+Denne rapport viser resultater af opgaver i Regression Discontinuity (RD) baseret på data fra \autocite{ludwig_does_2007}. Datasættet er gjort tilgængelig af \autocite{calonico_regression_2018} her: \url{https://github.com/rdpackages-replication/CCFT_2019_RESTAT/blob/master/headstart.dta}.
+
+Datasættet benyttes til at undersøge
+	\begin{quote}
+	``the effect of Head Start assistance on child mortality in the United States, which was first studied by Ludwig and Miller (2007). The unit of observation is the U.S. county, the treatment is receiving technical assistance to apply for Head Start funds, and the running variable is the county-level poverty index constructed in 1965 by the federal government based on 1960 census information, with cutoff $\bar{x} =59.1984$. The outcome is the child mortality rate (for children ages 5 to 9) due to causes affected by Head Start's health services component.'' \autocite{calonico_regression_2018}
+	\end{quote}
+
+
+Stata-kode til at producere resultaterne kan findes i denne nye, state-of-the-art RD introduktion:
+\textcite{cattaneo_practical_2020}, som er tilgængelig her: \url{https://cattaneo.princeton.edu/books/Cattaneo-Idrobo-Titiunik_2019_CUP-Vol1.pdf}. Skal man arbejde med RD i sin opgave, er det god ide at læse bogen. Hvis man alene skal bruge det til at lære om RD i denne uges opgaver, kan man nøjes med at bruge de Stata Snippets (kode-stumper), som der henvises til herunder, og som kan findes i \textcite{cattaneo_practical_2020}.
+
+Stata-tip I: Kommandoerne, som Cattaneo et al. bruger (rdplot og rdrobust), er fra en pakke som skal installeres i Stata før end I kan bruge det første gang. Det installeres med denne kommando:
+
+\noindent \verb|net install rdrobust, /// |
+
+\noindent \verb|from(https://raw.githubusercontent.com/rdpackages/rdrobust/master/stata) replace|
+
+Stata-tip II: Definer indledningsvist global makroer, der forklarer hvilken variabel, der er outcome (y), hvilken der er running variabel (x) og hvad der er cutoff (c):
+\begin{quote}
+\verb|global y mort_age59_related_postHS|
+
+\verb|global x povrate60|
+
+\verb|global c 59.1968|
+\end{quote}
+\indent -- så er det let at bruge de Cattaneo et al.'s Stata snipttes (så skal Y blot erstattes med \$y etc.) 
+
+\section*{Plots}
+
+Figur \ref{scatter} viser scatterplot. Baseret på Stata Snippet 1, s. 20.
+
+
+\begin{figure}
+\caption{Scatterplot} \label{scatter}
+\includegraphics{RDD/scatter.pdf}
+\end{figure}
+
+Figur \ref{scatter_trunc} viser samme scatterplot, men kun for y-værdier (børnedødelighed) mindre end 10.
+
+
+\begin{figure}
+\caption{Scatterplot} \label{scatter_trunc}
+\includegraphics{RDD/scatter_trunc.pdf}
+\end{figure}
+
+Figur \ref{rdplot} viser RD plot, hvor størrelsen af bins (punkterne i figuren, som er gennemsnit taget over de omkringliggende observationer) er valgt automatisk. Baseret på Stata Snippet 4, s. 30.
+
+
+
+\begin{figure}
+\caption{RD plot} \label{rdplot}
+\includegraphics{RDD/rdplot.pdf}
+\end{figure}
+
+
+\section*{Resultater}
+
+Tabel \ref{rdtabel} viser RD estimater af effekt af treatment for forskellige polynomium grader og båndbredder. Baseret på Stata Snippet 14 (s. 58) og 17 (s. 61).
+
+De forskellige modeller er robusthedstjek, der skal vurdere, hvor følsomt estimatet af effekten er over for disse forskellige modelspecifikationer.
+
+\begin{table}[h] \centering
+	\resizebox{\textwidth}{!}{\begin{threeparttable} 
+		\caption{RD tabel} \label{rdtabel}
+			\input{RDD/rdtabel.tex}
+		\begin{tablenotes}
+			\item Pol = Polynomium, bdwidth = bandwidth, data = datadriven            
+            \item Kilde: Data fra \autocite{ludwig_does_2007}
+        \end{tablenotes}
+	\end{threeparttable}}
+\end{table}
+
+Figur \ref{rdmodel1} viser RD plot for model 1 (dvs. polynomium = 1, bandwidth =20) og figur \ref{rdmodel4} viser model 4. Baseret på Stata Snippet 19, s. 63.
+
+
+
+\begin{figure}
+\caption{RD plot  af model 1 i tabel \ref{rdtabel}} \label{rdmodel1}
+\includegraphics{RDD/rdmodel_1_20.pdf}
+\end{figure}
+
+\begin{figure}
+\caption{RD plot  af model 4 i tabel \ref{rdtabel}} \label{rdmodel4}
+\includegraphics{RDD/rdmodel_2_10.pdf}
+\end{figure}
+
+
+\textit{Skriv en kort fortolkning af hvad resultaterne viser, og vurder robustheden af dem.
+}
+\clearpage
+\printbibliography
+
+\end{document}
+
+
+
