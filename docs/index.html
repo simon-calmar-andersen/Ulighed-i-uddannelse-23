@@ -1477,17 +1477,23 @@ overflow-y: auto;
 border: 1px solid #ddd;
 border-radius: 4px;
 }
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+content: "";
 font-family: 'Glyphicons Halflings';
 display: inline-block;
 padding: 10px;
 border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-content: "\e258";
-font-family: 'Glyphicons Halflings';
+content: "";
 border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+content: "";
+font-family: 'Glyphicons Halflings';
+display: inline-block;
+padding: 10px;
+border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs > li.active {
 display: block;
@@ -1681,9 +1687,9 @@ Undervisningsplan</h2>
 <col width="0%" />
 <col width="0%" />
 <col width="4%" />
-<col width="35%" />
-<col width="30%" />
-<col width="27%" />
+<col width="37%" />
+<col width="26%" />
+<col width="29%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1741,21 +1747,20 @@ vejledning ugen efter.</td>
 <td><a href="#forældre-coproduction-og-nudging">Forældre, coproduction
 og nudging</a><br />
 </td>
-<td><div class="line-block">RCT<br />
-<a href="https://www.aarhus.dk/borger/pasning-skole-og-uddannelse/tidlige-indsatser/read-sammen-om-laesning/">Læs
-om READ i Aarhus</a></div></td>
-<td><div class="line-block"><span class="citation">Parks et al. (<a href="#ref-parks_consumers_1981" role="doc-biblioref">1981</a>)</span>;
+<td>RCT <a href="https://www.aarhus.dk/borger/pasning-skole-og-uddannelse/tidlige-indsatser/read-sammen-om-laesning/">Læs
+om READ i Aarhus</a></td>
+<td><span class="citation">Parks et al. (<a href="#ref-parks_consumers_1981" role="doc-biblioref">1981</a>)</span>;
 <span class="citation">Inzlicht, Werner, Briskin, &amp; Roberts (<a href="#ref-inzlicht_integrating_2021" role="doc-biblioref">2021</a>)</span>; <span class="citation">Damgaard
 &amp; Nielsen (<a href="#ref-damgaard_nudging_2018" role="doc-biblioref">2018</a>)</span>; <span class="citation">S. C.
 Andersen &amp; Nielsen (<a href="#ref-andersen2016" role="doc-biblioref">2016</a>)</span>; <span class="citation">Angrist
 &amp; Pischke (<a href="#ref-angrist_mastering_2014" role="doc-biblioref">2014</a>)</span> Intro, kap. 1 (Bogen kan købes i
-Stakbogladen)</div></td>
-<td><div class="line-block"><span class="citation">Jakobsen (<a href="#ref-jakobsen_can_2013" role="doc-biblioref">2013</a>)</span>;
-<span class="citation">Grøver, Rydland, Gustafsson, &amp; Snow (<a href="#ref-grover_shared_2020" role="doc-biblioref">2020</a>)</span>;
-<span class="citation">Bergman (<a href="#ref-bergman_parent-child_2019" role="doc-biblioref">2019</a>)</span>; <span class="citation">Mayer,
+Stakbogladen)</td>
+<td><span class="citation">Jakobsen (<a href="#ref-jakobsen_can_2013" role="doc-biblioref">2013</a>)</span>; <span class="citation">Grøver,
+Rydland, Gustafsson, &amp; Snow (<a href="#ref-grover_shared_2020" role="doc-biblioref">2020</a>)</span>; <span class="citation">Bergman
+(<a href="#ref-bergman_parent-child_2019" role="doc-biblioref">2019</a>)</span>; <span class="citation">Mayer,
 Kalil, Oreopoulos, &amp; Gallegos (<a href="#ref-mayer_using_2018" role="doc-biblioref">2018</a>)</span>; <span class="citation">York,
 Loeb, &amp; Doss (<a href="#ref-york_one_2018" role="doc-biblioref">2018</a>)</span>; <span class="citation">Castro et
-al. (<a href="#ref-castro_parental_2015" role="doc-biblioref">2015</a>)</span></div></td>
+al. (<a href="#ref-castro_parental_2015" role="doc-biblioref">2015</a>)</span></td>
 </tr>
 <tr class="odd">
 <td>9</td>
@@ -1763,9 +1768,8 @@ al. (<a href="#ref-castro_parental_2015" role="doc-biblioref">2015</a>)</span></
 <td><a href="#klassekammerater-og-peer-effects">Klassekammerater og peer
 effects</a></td>
 <td>Regression</td>
-<td><span class="citation">Sacerdote (<a href="#ref-sacerdote_experimental_2014" role="doc-biblioref">2014</a>)</span>; <span class="citation">Junge (<a href="#ref-junge_administrative_2020" role="doc-biblioref">2021</a>)</span> Findes her: <a href="https://github.com/simon-calmar-andersen/Ulighed-i-uddannelse/raw/main/docs/Special%20education.pdf">Link</a>;
-<span class="citation">Ekspertgruppen vedrørende fordeling af elever på
-de gymnasiale uddannelser (<a href="#ref-ekspertgruppen_vedrorende_fordeling_af_elever_pa_de_gymnasiale_uddannelser_anbefalinger_2020" role="doc-biblioref">2020</a>)</span>, pp. 1-13; <span class="citation">Angrist &amp; Pischke (<a href="#ref-angrist_mastering_2014" role="doc-biblioref">2014</a>)</span>
+<td><span class="citation">Sacerdote (<a href="#ref-sacerdote_experimental_2014" role="doc-biblioref">2014</a>)</span>; <span class="citation">Junge (<a href="#ref-junge_administrative_2020" role="doc-biblioref">2021</a>)</span>; <span class="citation">Ekspertgruppen vedrørende fordeling af elever på de
+gymnasiale uddannelser (<a href="#ref-ekspertgruppen_vedrorende_fordeling_af_elever_pa_de_gymnasiale_uddannelser_anbefalinger_2020" role="doc-biblioref">2020</a>)</span>, pp. 1-13; <span class="citation">Angrist &amp; Pischke (<a href="#ref-angrist_mastering_2014" role="doc-biblioref">2014</a>)</span>
 kap. 2</td>
 <td><span class="citation">Hoxby &amp; Weingarth (<a href="#ref-hoxby_taking_2005" role="doc-biblioref">2005</a>)</span>;
 <span class="citation">Sacerdote (<a href="#ref-sacerdote_peer_2001" role="doc-biblioref">2001</a>)</span>; <span class="citation">Bursztyn
@@ -1808,11 +1812,11 @@ til paper); <span class="citation">Jacob (<a href="#ref-jacob_accountability_200
 <td><a href="#skoler-og-implementering">Skoler og
 implementering</a></td>
 <td>Difference-in-differences</td>
-<td><div class="line-block"><span class="citation">Al-Ubaydli, List,
-&amp; Suskind (<a href="#ref-al-ubaydli_what_2017" role="doc-biblioref">2017</a>)</span>; <span class="citation">Banerjee
-et al. (<a href="#ref-banerjee_proof_2017" role="doc-biblioref">2017</a>)</span>; <span class="citation">Lortie-Forgues &amp; Inglis (<a href="#ref-lortie-forgues_rigorous_2019" role="doc-biblioref">2019</a>)</span>; <span class="citation">S. C.
+<td><span class="citation">Al-Ubaydli, List, &amp; Suskind (<a href="#ref-al-ubaydli_what_2017" role="doc-biblioref">2017</a>)</span>;
+<span class="citation">Banerjee et al. (<a href="#ref-banerjee_proof_2017" role="doc-biblioref">2017</a>)</span>;
+<span class="citation">Lortie-Forgues &amp; Inglis (<a href="#ref-lortie-forgues_rigorous_2019" role="doc-biblioref">2019</a>)</span>; <span class="citation">S. C.
 Andersen &amp; Hvidman (<a href="#ref-andersen_implementing_2020" role="doc-biblioref">2020</a>)</span>; <span class="citation">VIVE (<a href="#ref-vive_folkeskolereformen_2020" role="doc-biblioref">2020</a>)</span>; <span class="citation">Angrist
-&amp; Pischke (<a href="#ref-angrist_mastering_2014" role="doc-biblioref">2014</a>)</span>, kap. 5.</div></td>
+&amp; Pischke (<a href="#ref-angrist_mastering_2014" role="doc-biblioref">2014</a>)</span>, kap. 5.</td>
 <td><span class="citation">S. Winter (<a href="#ref-winter_integrating_1990" role="doc-biblioref">1990</a>)</span>; <span class="citation">S. C.
 Winter, Mikkelsen, Skov, &amp; Andersen (<a href="#ref-winter_effects_2020" role="doc-biblioref">2020</a>)</span></td>
 </tr>
